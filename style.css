@@ -2,21 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap');
 :root{
     /* Backgrounds */
-    --very-dark-blue-main :  hsl(222, 26%, 31%); /*main background*/
-    --very-dark-blue-screen: hsl(224, 36%, 15%);/*screen background*/ 
-    --very-dark-blue-keypad: hsl(223, 31%, 20%);/*toggle background, keypad background*/
+    --main-bg-color :  hsl(222, 26%, 31%); /*main background*/
+    --display-screen-bg: hsl(224, 36%, 15%);/*screen background*/ 
+    --keypad-bg: hsl(223, 31%, 20%);/*toggle background, keypad background*/
 
     /* Keys */
-    --dark-blue-key-background: hsl(225, 21%, 49%);
-    --dark-blue-key-shadow: hsl(224, 28%, 35%);
-    --red-key-toggle: hsl(6, 63%, 50%);
-    --dark-red-key-shadow: hsl(6, 70%, 34%);
-    --light-grayish-orange-key-background: hsl(30, 25%, 89%);
-    --grayish-orange-key-shadow: hsl(28, 16%, 65%);
+    --del-reset-bg: hsl(225, 21%, 49%);
+    --del-reset-box-shadow: hsl(224, 28%, 35%);
+    --toggle-color: hsl(6, 63%, 50%);
+    --toggle-box-shadow: hsl(6, 70%, 34%);
+    --buttons-bg: hsl(30, 25%, 89%);
+    --buttons-box-shadow: hsl(28, 16%, 65%);
 
     /* Text  */
-    --very-dark-grayish-blue: hsl(221, 14%, 31%);
-    --white: hsl(0, 0%, 100%);
+    --main-text-color: hsl(221, 14%, 31%);
+    --main-title-color: hsl(0, 0%, 100%);
+    --white: white;
 
     /* border */
     --border-radius: 10px;
@@ -30,8 +31,8 @@ body{
     font-family: 'Spartan', sans-serif;
     font-weight: 700;
     min-height: 100vh;
-    background-color: var(--very-dark-blue-main);
-    color: var(--white);
+    background-color: var(--main-bg-color);
+    color: var(--main-title-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +47,7 @@ body{
 }
 
 .main-display{
-    background-color: var(--very-dark-blue-screen);
+    background-color: var(--display-screen-bg);
     display: flex;
     flex-direction: column;
     text-align: right;
@@ -68,7 +69,7 @@ body{
     border-radius: var(--border-radius);
     display: grid;
     grid-template-columns: auto auto auto auto;
-    background-color: var(--very-dark-blue-keypad);
+    background-color: var(--keypad-bg);
     
 }
 
@@ -76,38 +77,39 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--light-grayish-orange-key-background);
+    background-color: var(--buttons-bg);
     border-radius: var(--border-radius);
     padding: 1rem 2rem;
     margin: 1rem;
-    color: var(--very-dark-grayish-blue);
-    box-shadow: 0px 3px var(--grayish-orange-key-shadow);
+    color: var(--main-text-color);
+    box-shadow: 0px 3px var(--buttons-box-shadow);
     cursor: pointer;   
 }
 .buttons:hover, .buttons:active{
     color: var(--white);
-    background-color: var(--dark-blue-key-shadow);
+    background-color: var(--del-reset-box-shadow);
 }
 
 #del, #reset{
-    background-color: var(--dark-blue-key-background);
+    background-color: var(--del-reset-bg);
     color: var(--white);
-    box-shadow: 0px 3px var(--dark-blue-key-shadow);
+    box-shadow: 0px 3px var(--del-reset-box-shadow);
     font-size: 1rem;
 }
 #del:hover, #reset:hover, #del:active, #reset:active{
-    background-color: var(--grayish-orange-key-shadow);
+    background-color: var(--buttons-box-shadow);
 }
 
 #equals{
-    background-color: var(--red-key-toggle);
+    background-color: var(--toggle-color);
     color: var(--white);
-    box-shadow: 0px 3px var(--dark-red-key-shadow);
+    box-shadow: 0px 3px var(--toggle-box-shadow);
     font-size: 1rem;
 }
 
 #equals:active, #equals:hover{
-    background-color: var(--dark-red-key-shadow);
+    background-color: var(--toggle-box-shadow);
+   
 }
 
 #reset, #equals {
@@ -138,7 +140,7 @@ body{
 }
 
 .theme-toggle-button{
-    background-color: var(--very-dark-blue-keypad);
+    background-color: var(--keypad-bg);
     border-radius: 20px;
     display: flex;
     justify-content: space-between;
@@ -147,12 +149,15 @@ body{
     align-self: center; 
 }
 
-.theme-toggle-button .default{
+.theme-toggle-button .toggle-circle {
     min-height: 20px;
     min-width: 20px;
     margin: .3rem;
     border-radius: 50%;
-    background-color: var(--red-key-toggle);
+    background-color: var(--toggle-color);
+    visibility: hidden;
+}
+.theme-toggle-button .default{
     visibility: visible;
 }
 
