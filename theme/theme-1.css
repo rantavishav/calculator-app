@@ -1,0 +1,172 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap');
+:root{
+    /* Backgrounds */
+    --very-dark-blue-main :  hsl(222, 26%, 31%); /*main background*/
+    --very-dark-blue-screen: hsl(224, 36%, 15%);/*screen background*/ 
+    --very-dark-blue-keypad: hsl(223, 31%, 20%);/*toggle background, keypad background*/
+
+    /* Keys */
+    --dark-blue-key-background: hsl(225, 21%, 49%);
+    --dark-blue-key-shadow: hsl(224, 28%, 35%);
+    --red-key-toggle: hsl(6, 63%, 50%);
+    --dark-red-key-shadow: hsl(6, 70%, 34%);
+    --light-grayish-orange-key-background: hsl(30, 25%, 89%);
+    --grayish-orange-key-shadow: hsl(28, 16%, 65%);
+
+    /* Text  */
+    --very-dark-grayish-blue: hsl(221, 14%, 31%);
+    --white: hsl(0, 0%, 100%);
+
+    /* border */
+    --border-radius: 10px;
+
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'Spartan', sans-serif;
+    font-weight: 700;
+    min-height: 100vh;
+    background-color: var(--very-dark-blue-main);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-display{
+    background-color: var(--very-dark-blue-screen);
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    padding:2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    min-height: 5vh;   
+    max-width: fit-content;
+    min-width: -webkit-fill-available;
+}
+
+.main-display .lower-display{
+    height: fit-content;
+    word-break: break-all ;
+}
+
+.main-calc-buttons{
+    border-radius: var(--border-radius);
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: var(--very-dark-blue-keypad);
+    
+}
+
+.buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-grayish-orange-key-background);
+    border-radius: var(--border-radius);
+    padding: 1rem 2rem;
+    margin: 1rem;
+    color: var(--very-dark-grayish-blue);
+    box-shadow: 0px 3px var(--grayish-orange-key-shadow);
+    cursor: pointer;   
+}
+.buttons:hover, .buttons:active{
+    color: var(--white);
+    background-color: var(--dark-blue-key-shadow);
+}
+
+#del, #reset{
+    background-color: var(--dark-blue-key-background);
+    color: var(--white);
+    box-shadow: 0px 3px var(--dark-blue-key-shadow);
+    font-size: 1rem;
+}
+#del:hover, #reset:hover, #del:active, #reset:active{
+    background-color: var(--grayish-orange-key-shadow);
+}
+
+#equals{
+    background-color: var(--red-key-toggle);
+    color: var(--white);
+    box-shadow: 0px 3px var(--dark-red-key-shadow);
+    font-size: 1rem;
+}
+
+#equals:active, #equals:hover{
+    background-color: var(--dark-red-key-shadow);
+}
+
+#reset, #equals {
+    grid-column: auto/ span 2;
+}
+
+
+/* Toogle Button Css */
+
+.theme{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-content: center;
+    font-size: .7rem;
+}
+.theme p{
+    margin-right: 2rem;
+}
+.theme-number{
+    grid-column: 2/ 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.theme-button{
+    margin: 0px .5rem;
+    cursor: pointer;
+}
+
+.theme-toggle-button{
+    background-color: var(--very-dark-blue-keypad);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: max-content; 
+    align-self: center; 
+}
+
+.theme-toggle-button .default{
+    min-height: 20px;
+    min-width: 20px;
+    margin: .3rem;
+    border-radius: 50%;
+    background-color: var(--red-key-toggle);
+    visibility: visible;
+}
+
+/* Media Query for width 500px */
+
+@media only screen and (max-width: 500px) {
+    body{
+        display: block;
+        padding: 2rem;
+    }
+
+    .buttons{
+        padding: .7rem .7rem;
+        margin: .5rem;
+        justify-content: space-around;
+    }
+}
