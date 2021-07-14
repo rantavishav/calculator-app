@@ -1,16 +1,10 @@
 
-var operatorActive = false ;
-var result = 0;
-var currentValueInput ="";
-var operatorValue = "";
-// Any Calc Number Button
+
+// Any Calc Number Button   
 const calcButtonHandle = (event) => {
     const numberClicked = event.target.id;
     // Render this Number On the MAin Display Screen
     document.getElementById("compute").innerText += numberClicked;
-
-    // Add This VAlue to currentValueInput
-    currentValueInput += numberClicked;
 
 }
 
@@ -28,56 +22,26 @@ const delNumber = () =>{
 // Reset Button
 const resetButton = () => {
     // Reset Dispaly Screen
-    document.getElementById("compute").innerText=0;
-    
-    // Reset Global varibale
-    operatorActive = false ;
-    result = 0;
-    currentValueInput ="";
-    operatorValue = "";
+    document.getElementById("compute").innerText='';
 }
 
 // Equal Button
 const equalButton = () => {
-    // Check Which Operator is Clicked ealier to calc result
-    if(operatorValue === "+"){
-        document.getElementById("compute").innerText = (result + Number(currentValueInput));
-    }else if(operatorValue === "-"){
-        document.getElementById("compute").innerText = (result - Number(currentValueInput));
-    }else if(operatorValue === "x"){
-        document.getElementById("compute").innerText = (result * Number(currentValueInput));
-    }else if(operatorValue === "/"){
-        document.getElementById("compute").innerText = (result / Number(currentValueInput));
-    }
-    
+    // call Result calc Function from Result.js File
+    const finalString = document.getElementById("compute").innerHTML;
+    resultCal(finalString);
 
-    // Rest The ActiveOperator Value
-    operatorActive = false;
-
-    
 }
 
 // Operator Buttons
 const operatorButton = (event) => {
+    const currentValueString = document.getElementById("compute").innerText;
+
     
-    if(operatorActive === false){
-        // Set Operator value
-        operatorValue = event.target.id;
-
-        // Set Result To inial Input Value
-        result =0;
-        result += Number(document.getElementById("compute").innerText);
-        
-        // Reset CurrentVAlue
-        currentValueInput = '';
-
-        // Render respective Operator to display
-        document.getElementById("compute").innerText += operatorValue;
-
+    // Check whether Lst Input is operator or not
+    if(currentValueString[currentValueString.length - 1] !== "+" && currentValueString[currentValueString.length - 1]!=="-" && currentValueString[currentValueString.length - 1] !==  "*" && currentValueString[currentValueString.length - 1] !==  "/"){
+        document.getElementById("compute").innerText += event.target.id
     }
-
-    operatorActive = true;
-    console.log('result :>> ', result);
 } 
 
 // Theme Button 
