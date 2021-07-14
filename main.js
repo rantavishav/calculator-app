@@ -10,7 +10,7 @@ const calcButtonHandle = (event) => {
 
 // Delete Button
 const delNumber = () =>{
-    var computeString = document.getElementById("compute").innerText;
+    let computeString = document.getElementById("compute").innerText;
     
     if(computeString.length>0){
         computeString = computeString.slice(0,computeString.length-1);
@@ -36,11 +36,13 @@ const equalButton = () => {
 // Operator Buttons
 const operatorButton = (event) => {
     const currentValueString = document.getElementById("compute").innerText;
-
-    
-    // Check whether Lst Input is operator or not
+    //Check Wherthe operatore is putting on sataring of DisplayString (except -ve)
+    if(currentValueString.length === 0 && (event.target.id === "+" || event.target.id === "*" || event.target.id === "/") ){
+        return null
+    }
+    // Check whether List Input is operator or not
     if(currentValueString[currentValueString.length - 1] !== "+" && currentValueString[currentValueString.length - 1]!=="-" && currentValueString[currentValueString.length - 1] !==  "*" && currentValueString[currentValueString.length - 1] !==  "/"){
-        document.getElementById("compute").innerText += event.target.id
+        document.getElementById("compute").innerText += event.target.id;
     }
 } 
 
@@ -72,7 +74,7 @@ const themeButton = (event) =>{
 
 // Function Which Will Change Theme w.r.t the input (1,2,3)
 const changeTheme = (themeNumber) => {
-    var rootNode= document.querySelector(':root');
+    const rootNode= document.querySelector(':root'); //Get Root Element(html)
 
     if(themeNumber === 1){
         // Chnage Toogle_circle Visbility

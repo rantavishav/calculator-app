@@ -90,29 +90,29 @@ body{
     background-color: var(--del-reset-box-shadow);
 }
 
-#del, #reset{
+#Backspace, #Escape{
     background-color: var(--del-reset-bg);
     color: var(--white);
     box-shadow: 0px 3px var(--del-reset-box-shadow);
     font-size: 1rem;
 }
-#del:hover, #reset:hover, #del:active, #reset:active{
+#Backspace:hover, #Escape:hover, #Backspace:active, #Escape:active{
     background-color: var(--buttons-box-shadow);
 }
 
-#equals{
+.equals{
     background-color: var(--toggle-color);
     color: var(--white);
     box-shadow: 0px 3px var(--toggle-box-shadow);
     font-size: 1rem;
 }
 
-#equals:active, #equals:hover{
+.equals:active, .equals:hover{
     background-color: var(--toggle-box-shadow);
    
 }
 
-#reset, #equals {
+#Escape, .equals {
     grid-column: auto/ span 2;
 }
 

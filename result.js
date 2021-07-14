@@ -4,7 +4,7 @@ const resultCal = (inputString) => {
     let newModifiedString = inputString;//Modified String Current State Value
 
     // Check for any divison and return result if there is any
-    console.log(checkAdd(inputString));
+    
     while(newModifiedString !== -1){
         PreviosModifiedString = newModifiedString;
         newModifiedString = checkDivison(newModifiedString);
@@ -24,17 +24,18 @@ const resultCal = (inputString) => {
     // Modify Value on the desired String Value;
     newModifiedString = PreviosModifiedString;
 
-    // Check for any Sub and return result if there is any
-    // console.log(`return`, checkSub(newModifiedString))
+    // // Check for any Sub and return result if there is any
+    newModifiedString = checkSub(newModifiedString);
+    console.log(`return`,  newModifiedString)
     while(newModifiedString !== -1){
         PreviosModifiedString = newModifiedString;
         newModifiedString = checkSub(newModifiedString);
         console.log(`newModifiedString`, newModifiedString);
     }
     
-    // Modify Value on the desired String Value;
-    newModifiedString = PreviosModifiedString;
-    // Check for any Addition and return result if there is any
+    // // Modify Value on the desired String Value;
+    // newModifiedString = PreviosModifiedString;
+    // // Check for any Addition and return result if there is any
     while(newModifiedString !== -1){
         PreviosModifiedString = newModifiedString;
         newModifiedString = checkAdd(newModifiedString);
@@ -196,13 +197,16 @@ const checkSub = (input) => {
     if( operatorIndex === -1 ) {
         return -1; //terminating Value
     }
-
+    
     // Check If there Is Only One negative Value
     // ("str1,str2,str3,str4".match(/,/g) || []).length
     if((finalResultString.match(/-/g) || []).length === 1 && operatorIndex === 0){
         return -1
     }
-
+    // Check if there is anyOperator Right before or after -ve sign
+    if((finalResultString[operatorIndex-1] === "+")||(finalResultString[operatorIndex+1] === "+")){
+        return resolveMultipleOperator(finalResultString);
+    }
     // Loop Through Each left Item From The Operator Index Until New Operator is not found
     for (let index = operatorIndex+1; index < finalResultString.length; index++) {
         
@@ -222,29 +226,31 @@ const checkSub = (input) => {
    // Loop Through Each left Item From The Operator Index Until New Operator is not found
    for (let index = operatorIndex-1; index >= 0; index--) {
    
-    if(finalResultString[index] === "+" || finalResultString[index] === "*" || finalResultString[index] === "/"){
+        if(finalResultString[index] === "+" || finalResultString[index] === "*" || finalResultString[index] === "/"){
 
-        break
-    }    
-    leftValue += finalResultString[index];
-} 
+            break
+        }    
+        leftValue += finalResultString[index];
+    } 
 
 
 
-if(isNegative){
-        
-    result = ( -(Number(leftValue.split("").reverse().join(""))) - Number(rightValue));
-    finalResultString = finalResultString.replace(`-${leftValue.split("").reverse().join("")}-${rightValue}`, `${result}`);
-    return finalResultString;
 
-}
 
 result = (Number(leftValue.split("").reverse().join("")) - Number(rightValue));
 finalResultString = finalResultString.replace(`${leftValue.split("").reverse().join("")}-${rightValue}`, `${result}`);
-
+console.log(`result`, finalResultString);
 return finalResultString   
 }
 
+const resolveMultipleOperator = (input) => {
+    const negativeIndex = input.indexOf("-");
+    if(input[negativeIndex-1] === "+"){
+        const newString = input.replace(input[negativeIndex-1],'');
+        return newString;
+    }
+    
+}
 //HelperSub Function
 const helperSubFunc = (input) => {
     
