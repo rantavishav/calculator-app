@@ -24,9 +24,7 @@ const resultCal = (inputString) => {
     // Modify Value on the desired String Value;
     newModifiedString = PreviosModifiedString;
 
-    // // Check for any Sub and return result if there is any
-    // newModifiedString = checkSub(newModifiedString);
-    // console.log(`return`,  newModifiedString)
+    // Check for any Sub and return result if there is any 
     while(newModifiedString !== -1){
         PreviosModifiedString = newModifiedString;
         newModifiedString = checkSub(newModifiedString);
@@ -34,7 +32,7 @@ const resultCal = (inputString) => {
     }
     
     // // Modify Value on the desired String Value;
-    // newModifiedString = PreviosModifiedString;
+    newModifiedString = PreviosModifiedString;
     // // Check for any Addition and return result if there is any
     while(newModifiedString !== -1){
         PreviosModifiedString = newModifiedString;
