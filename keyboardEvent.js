@@ -12,6 +12,11 @@ const exampleFunc = (event) => {
             document.getElementById(key).click();
         }
     });
+
+    // Enter Key Mapping To = Button
+    if(key === "Enter"){
+        document.getElementById("=").click();
+    }
     
 }
 keyPressEvent();
