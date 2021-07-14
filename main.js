@@ -35,10 +35,11 @@ const equalButton = () => {
 
 // Operator Buttons
 const operatorButton = (event) => {
-    const currentValueString = document.getElementById("compute").innerText
+    const currentValueString = document.getElementById("compute").innerText;
+
     
     // Check whether Lst Input is operator or not
-    if(currentValueString[currentValueString.length - 1] !== "+" && currentValueString[currentValueString.length - 1]!=="/" && currentValueString[currentValueString.length - 1] !==  "x" && currentValueString[currentValueString.length - 1] !==  "/"){
+    if(currentValueString[currentValueString.length - 1] !== "+" && currentValueString[currentValueString.length - 1]!=="-" && currentValueString[currentValueString.length - 1] !==  "*" && currentValueString[currentValueString.length - 1] !==  "/"){
         document.getElementById("compute").innerText += event.target.id
     }
 } 
