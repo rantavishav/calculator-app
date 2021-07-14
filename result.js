@@ -25,8 +25,8 @@ const resultCal = (inputString) => {
     newModifiedString = PreviosModifiedString;
 
     // // Check for any Sub and return result if there is any
-    newModifiedString = checkSub(newModifiedString);
-    console.log(`return`,  newModifiedString)
+    // newModifiedString = checkSub(newModifiedString);
+    // console.log(`return`,  newModifiedString)
     while(newModifiedString !== -1){
         PreviosModifiedString = newModifiedString;
         newModifiedString = checkSub(newModifiedString);
